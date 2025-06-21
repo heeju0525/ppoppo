@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>포폴 ㅌㅅㅌ</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .corner-label {
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: #999;
+      letter-spacing: 1px;
+      z-index: 10;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding-left: 80px;
+      overflow: hidden;
+      color: white;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+
+    .fade-up.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .subtext {
+      font-size: 1.4rem;
+      font-weight: 300;
+      letter-spacing: 1.5px;
+      margin-bottom: 30px;
+      color: #bbb;
+    }
+
+    .portfolio-text {
+      font-size: 6rem;
+      font-weight: 900;
+      line-height: 1.1;
+      color: white;
+      text-align: left;
+      user-select: none;
+      letter-spacing: -2px;
+    }
+
+    .shape {
+      position: absolute;
+      background: white;
+      opacity: 0;
+      transform: scale(0.7) translateY(40px);
+      transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .shape.active {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    .shape1 {
+      top: 10%;
+      left: 55%;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+
+    .shape2 {
+      top: 20%;
+      right: 5%;
+      width: 100px;
+      height: 14px;
+      transform: rotate(45deg);
+      border-radius: 7px;
+    }
+
+    .shape3 {
+      bottom: 20%;
+      left: 60%;
+      width: 60px;
+      height: 60px;
+    }
+
+    .shape4 {
+      bottom: 15%;
+      left: 20px;
+      width: 70px;
+      height: 70px;
+      border-radius: 0 100% 0 0;
+    }
+
+    .contact-info {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      text-align: right;
+      font-size: 0.9rem;
+      color: #ccc;
+      line-height: 1.5;
+    }
+
+    .intro {
+      background: white;
+      color: black;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+
+    .about-me {
+      background: rgb(255, 255, 255);
+      color: rgb(26, 26, 26);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 6rem;
+      font-weight: 900;
+      user-select: none;
+      letter-spacing: -2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="corner-label">graphic design</div>
+
+  <section class="hero">
+    <div class="subtext fade-up">cho heeju graphic design</div>
+    <div class="portfolio-text fade-up">portfolio</div>
+
+    <div class="shape shape1"></div>
+    <div class="shape shape2"></div>
+    <div class="shape shape3"></div>
+    <div class="shape shape4"></div>
+
+    <div class="contact-info">
+      +82 010-1234-5678<br>
+      test1234@gmail.com
+    </div>
+  </section>
+
+  <section class="intro">
+    ㅎㅇ <br />
+    아직 ㅌㅅㅌ중임
+  </section>
+
+  <section class="about-me">
+    About me
+  </section>
+
+  <script>
+    function handleScroll() {
+      const shapes = document.querySelectorAll('.shape');
+      const fadeUps = document.querySelectorAll('.fade-up');
+      const hero = document.querySelector('.hero');
+      const rect = hero.getBoundingClientRect();
+
+      if (rect.top < window.innerHeight * 0.9 && rect.bottom > window.innerHeight * 0.1) {
+        fadeUps.forEach(el => el.classList.add('active'));
+        shapes.forEach(shape => shape.classList.add('active'));
+      } else {
+        fadeUps.forEach(el => el.classList.remove('active'));
+        shapes.forEach(shape => shape.classList.remove('active'));
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+  </script>
+
+</body>
+</html>
